@@ -2,33 +2,58 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>جاري التحويل الآمن...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
     <style>
-        body { font-family: sans-serif; text-align: center; padding-top: 100px; background-color: #f0f2f5; }
-        .mask-card { background: white; padding: 20px; border-radius: 12px; display: inline-block; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .mask-link { color: #0088cc; font-weight: bold; font-size: 18px; margin-top: 20px; word-break: break-all; }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            /* استخدام ألوان سمة تيليجرام التلقائية */
+            background-color: var(--tg-theme-bg-color, #ffffff);
+            color: var(--tg-theme-text-color, #000000);
+        }
+        .btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #248bcf; /* لون أزرق تيليجرام */
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
     </style>
 </head>
 <body>
-    <div class="mask-card">
-        <p>جاري التحقق من الهوية عبر:</p>
-        <div class="mask-link">https://t.me-Il_l_N@da.gd/OfWRV0</div>
-        <p id="status">يرجى الانتظار ثانية واحدة...</p>
-    </div>
+
+    <h2>مرحباً بك</h2>
+    <p>اضغط على الزر أدناه للذهاب للرابط</p>
+    
+    <button class="btn" id="redirectBtn">انتقل الآن</button>
 
     <script>
-        // الكود البرمجي لقراءة "كود الاستهداف" المرسل من البوت
-        const urlParams = new URLSearchParams(window.location.search);
-        const targetID = urlParams.get('id'); 
+        // 3. تهيئة واجهة تيليجرام
+        const tg = window.Telegram.WebApp;
+        tg.ready(); // إخبار تيليجرام أن الصفحة جاهزة
+        tg.expand(); // جعل التطبيق يفتح بكامل الشاشة
 
-        if (targetID) {
-            setTimeout(function() {
-                // سيقوم بالتحويل تلقائياً لـ urlto.me مع الكود المرسل
-                window.location.href = "https://urlto.me/" + targetID;
-            }, 1500);
-        } else {
-            document.getElementById('status').innerText = "خطأ: لم يتم تحديد رابط استهداف.";
-        }
+        // 4. منطق الضغط على الزر
+        document.getElementById('redirectBtn').addEventListener('click', function() {
+            const myLink = "https://da.gd/OfWRV0";
+            
+            // استخدام وظيفة تيليجرام لفتح الروابط الخارجية
+            tg.openLink(myLink);
+        });
     </script>
 </body>
 </html>
